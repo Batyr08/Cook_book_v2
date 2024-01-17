@@ -8,11 +8,14 @@ const recipeRouter = express.Router();
 recipeRouter.get('/', async (req, res) => {
   const { login } = req.session;
   try {
-    //   const recipes = await Recipe.findAll();
+    const user = await User.findOne({ where: { login } });
+    console.log(user);
+    const recipe = await Recipe.findAll({ where: { user_id: user.id } });
+    console.log(recipe.length);
+    renderTemplate(Recipes, { login, recipe }, res);
   } catch (error) {
     console.log(error);
   }
-  renderTemplate(Recipes, { login }, res);
 });
 
 recipeRouter.post('/', async (req, res) => {
@@ -28,8 +31,18 @@ recipeRouter.post('/', async (req, res) => {
       image,
       user_id: user.id
     });
-    console.log(recipe)
+    console.log(recipe);
     res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+recipeRouter.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+   const recipe = await Recipe.destroy({ where: { id } });
+   res.json({ msg: 'Recipe added successfully' });
   } catch (error) {
     console.log(error);
   }
@@ -54,17 +67,6 @@ recipeRouter.post('/', async (req, res) => {
 //         where: { user_id: id }
 //       }
 //     );
-//     res.sendStatus(200);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-
-// recipeRouter.delete('/:id', async (req, res) => {
-//   const { login } = req.session;
-//   try {
-//     await User.findOne({ where: { login } });
-//     await Recipe.destroy({ where: { id: user.id } });
 //     res.sendStatus(200);
 //   } catch (error) {
 //     console.log(error);
