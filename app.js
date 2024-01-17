@@ -20,6 +20,7 @@ const sessionConfig = {
   },
 };
 
+const aiRouter = require('./src/routes/ai')
 const mainRouter = require('./src/routes/main')
 const regRouter = require('./src/routes/reg')
 const logRouter = require('./src/routes/log');
@@ -35,6 +36,7 @@ app.use(express.json());
 app.use(express.static(path.join(process.cwd(), 'public')));
 
 app.use('/', mainRouter)
+app.use('/ai', aiRouter)
 app.use('/register', secureRoute, regRouter)
 app.use('/login', secureRoute, logRouter)
 app.use('/recipes', recipeRouter)
