@@ -26,7 +26,7 @@ function Layout({ children, login }) {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/profile">
+                    <a className="nav-link active" aria-current="page" href="/recipes">
                       Мои рецепты
                     </a>
                   </li>

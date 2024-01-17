@@ -23,6 +23,7 @@ const sessionConfig = {
 const mainRouter = require('./src/routes/main')
 const regRouter = require('./src/routes/reg')
 const logRouter = require('./src/routes/log');
+const recipeRouter = require('./src/routes/myrecipe')
 
 const app = express();
 const PORT = process.env.PORT;
@@ -36,6 +37,7 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 app.use('/', mainRouter)
 app.use('/register', secureRoute, regRouter)
 app.use('/login', secureRoute, logRouter)
+app.use('/recipes', recipeRouter)
 
 app.listen(PORT, () => {
   console.log(`Сервер запущен на порту: ${PORT}`);
