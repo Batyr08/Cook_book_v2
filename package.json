@@ -1,0 +1,39 @@
+{
+  "name": "cook_book_v2",
+  "version": "1.0.0",
+  "description": "Cook_book_v2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js --ignore sessions --ext js,jsx",
+    "db:reset": "npx sequelize-cli db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.3"
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.8",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/register": "^7.23.7",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sequelize": "^6.35.2",
+    "sequelize-cli": "^6.6.2",
+    "session-file-store": "^1.5.0",
+    "websockets": "^0.2.0",
+    "ws": "^8.16.0"
+  }
+}
