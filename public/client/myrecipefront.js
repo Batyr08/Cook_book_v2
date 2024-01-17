@@ -1,4 +1,5 @@
 const form = document.querySelector('.addform');
+const container = document.querySelector('.myrecipes-container')
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -20,3 +21,20 @@ form.addEventListener('submit', async (e) => {
     console.log(error);
   }
 });
+
+container.addEventListener('click', async (e) => {
+    if (e.target.tagName === 'BUTTON') {
+      if (e.target.classList.value.includes('danger')) {
+        const { id } = e.target;
+        console.log(id)
+        const response = await fetch(`/recipes/${id}`, {
+          method: 'DELETE'
+        });
+        const result = await response.json();
+        if (result.msg) {
+          const card = e.target.closest('.recipe_card');
+          container.removeChild(card);
+        }
+      }
+    }
+  });

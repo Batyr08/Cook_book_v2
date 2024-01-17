@@ -1,7 +1,8 @@
 const React = require('react');
 const Layout = require('./Layout');
+const Card = require('./MyRecipeCard')
 
-function Recipe({ login }) {
+function Recipe({ login, recipe}) {
   return (
     <Layout login={login}>
       <script defer src="./client/myrecipefront.js"></script>
@@ -16,6 +17,23 @@ function Recipe({ login }) {
           <input type="number" name="time" placeholder="Добавьте время приготовления" required />
           <button className="custom-btn btn-16">Добавить</button>
         </form>
+      </div>
+      <div className="myrecipes-container">
+        {recipe.length ? (
+          recipe.map((onerecipe) => (
+            <Card
+              key={onerecipe.id}
+              recipeImg={onerecipe.image}
+              recipeTit={onerecipe.title}
+              recipeDes={onerecipe.description}
+              recipeIng={onerecipe.ingredient}
+              recipeTime={onerecipe.time}
+              recipeId={onerecipe.id}
+            />
+          ))
+        ) : (
+          <p>У вас еще нет рецептов</p>
+        )}
       </div>
     </Layout>
   );
