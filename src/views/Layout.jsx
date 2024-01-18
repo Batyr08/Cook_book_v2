@@ -52,7 +52,13 @@ function Layout({ children, login }) {
                   </li>
                 </ul>
               ) : (
+                
                 <ul className="navbar-nav">
+                  <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="/">
+                      Главная
+                    </a>
+                  </li>
                   <li className="nav-item">
                     <a className="nav-link active" aria-current="page" href="/login">
                       Войти
@@ -68,8 +74,9 @@ function Layout({ children, login }) {
             
             </aside>
       </div>
-    
-        {children}
+    <div className='wrapper'>
+    {children}
+    </div>
       </body>
     
       <div className="custom-shape-divider-bottom-1705101024">
