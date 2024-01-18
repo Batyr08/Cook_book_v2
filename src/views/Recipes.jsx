@@ -7,8 +7,13 @@ function Recipe({ login, recipe}) {
     <Layout login={login}>
       <script defer src="./client/myrecipefront.js"></script>
       <link rel="stylesheet" href="/css/addeditforms.css" />
-      <div className="addformwrapper">
-        <h3>Добавь рецепт!</h3>
+      <link rel="stylesheet" href="/css/card.css" />
+      <div className='myrecipes_wrapper'>
+
+<div className='baners_wrapper'>
+ <img src="/img/foodbaner.png" alt="foodbaner" />
+<div className="addformwrapper">
+        <h3>Добавь свой рецепт!</h3>
         <form className="addform" method="POST" action="/recipes">
           <input type="text" name="title" placeholder="Добавьте название" required />
           <input type="text" name="image" placeholder="Добавьте картинку" required />
@@ -18,23 +23,34 @@ function Recipe({ login, recipe}) {
           <button className="custom-btn btn-16">Добавить</button>
         </form>
       </div>
+      <img src="/img/foodbaner1.png" alt="foodbaner" />
+</div>
+   
       <div className="myrecipes-container">
         {recipe.length ? (
           recipe.map((onerecipe) => (
-            <Card
-              key={onerecipe.id}
-              recipeImg={onerecipe.image}
-              recipeTit={onerecipe.title}
-              recipeDes={onerecipe.description}
-              recipeIng={onerecipe.ingredient}
-              recipeTime={onerecipe.time}
-              recipeId={onerecipe.id}
-            />
+            <div className="recipe_card">
+        <div><img className="heart_logo" src="/img/heart.png" alt="" /></div>
+        <img style={{ height: '440px' }} src={onerecipe.image} alt="Картинка рецепта" />
+        <div className="card-body">
+          <h2 className="card-title">{onerecipe.title}</h2>
+          <p className="card-description">{onerecipe.description}</p>
+          <p className="card-ingredients">{onerecipe.ingredient}</p>
+          <p className="card-time">{onerecipe.time}</p>
+          <button type="button" className="btn btn-danger" id={onerecipe.id}>
+            Удалить
+          </button>
+        </div>
+        <a href={`recipes/${onerecipe.id}`}>Перейти к рецепту</a>
+      </div>
           ))
         ) : (
           <p>У вас еще нет рецептов</p>
         )}
       </div>
+
+      </div>
+     
     </Layout>
   );
 }
