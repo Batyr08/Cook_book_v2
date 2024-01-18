@@ -32,7 +32,7 @@ recipeRouter.post('/', async (req, res) => {
       user_id: user.id
     });
     console.log(recipe);
-    res.sendStatus(200);
+    res.json(recipe);
   } catch (error) {
     console.log(error);
   }
@@ -47,31 +47,6 @@ recipeRouter.delete('/:id', async (req, res) => {
     console.log(error);
   }
 });
-
-// recipeRouter.put('/:id', async (req, res) => {
-//   const { login } = req.session;
-//   const { id } = req.params;
-//   const { title, description, ingredient, time, image, user_id } = req.body;
-//   try {
-//     const user = await User.findOne({ where: { id: login } });
-//     await Recipe.update(
-//       {
-//         title,
-//         description,
-//         ingredient,
-//         time,
-//         image,
-//         user_id: user.id
-//       },
-//       {
-//         where: { user_id: id }
-//       }
-//     );
-//     res.sendStatus(200);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
 
 recipeRouter.put('/:id', async (req, res) => {
   const { login } = req.session;

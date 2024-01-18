@@ -2,25 +2,46 @@ const form = document.querySelector('.addform');
 const container = document.querySelector('.myrecipes-container')
 
 form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const data = new FormData(form);
-  const res = Object.fromEntries(data);
-  try {
-    const response = await fetch('/recipes', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(res)
-    });
-    const result = JSON.stringify(response);
-    if ((result.status = 200)) {
-      window.location.href = '/recipes';
+    e.preventDefault();
+    const data = new FormData(form);
+    console.log(data);
+    const res = Object.fromEntries(data);
+    console.log(res);
+    try {
+      const response = await fetch('/recipes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(res)
+      });
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+        const div = document.createElement('div');
+        div.classList.add('recipe_card');
+        div.id = `recipe-${result.id}`;
+        div.innerHTML = `
+        <div class="recipe_card">
+        <img style={{ height: '440px' }} src=${result.image} alt="Картинка рецепта" />
+        <div class="card-body">
+          <h2 class="card-title">${result.title}</h2>
+          <p class="card-description">${result.description}</p>
+          <p class="card-ingredients">${result.ingredient}</p>
+          <p class="card-time">${result.time}</p>
+          <button type="button" class="btn btn-danger" id=${result.id}>
+            Удалить
+          </button>
+        </div>
+        <a href=${`recipes/${result.id}`}>Перейти к рецепту</a>
+      </div>
+          `;
+        container.appendChild(div);
+      }
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
-});
+  });
 
 container.addEventListener('click', async (e) => {
     if (e.target.tagName === 'BUTTON') {

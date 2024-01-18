@@ -30,7 +30,6 @@ function Recipe({ login, recipe}) {
         {recipe.length ? (
           recipe.map((onerecipe) => (
             <div className="recipe_card">
-        <div><img className="heart_logo" src="/img/heart.png" alt="" /></div>
         <img style={{ height: '440px' }} src={onerecipe.image} alt="Картинка рецепта" />
         <div className="card-body">
           <h2 className="card-title">{onerecipe.title}</h2>
