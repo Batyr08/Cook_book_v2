@@ -40,7 +40,7 @@ function Recipe({ login, recipe}) {
             Удалить
           </button>
         </div>
-        <a href={`recipes/${onerecipe.id}`}>Перейти к рецепту</a>
+        <a href={`recipes/${onerecipe.id}`}>Отредактировать рецепт</a>
       </div>
           ))
         ) : (

@@ -5,33 +5,33 @@ function Log() {
   return (
     <Layout>
       <script defer src="./client/logg.js" />
-      <form method="POST" action="/login" id="logForm">
-        <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Введите имя пользователя"
-            name='login'
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
+      <link rel="stylesheet" href="/css/logregform.css" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+      <div className="center">
+        <h1>Войдите в ваш аккаунт</h1>
+        <form style={{height: "290px"}} method="POST" action="/login" id="logForm">
+          {' '}
+          {/* action='/api/auth/signup' method='POST' onSubmit={handlerSubmit} */}
+          <div className="txt_field">
+            <input name="login" type="text" id="inputname" required />
+            <label>Имя</label>
+            <span />
+          </div>
+          <div className="txt_field">
+            <input name="password" type="password" required />
+            <label>Введите пароль</label>
+            <span />
+          </div>
 
-          <input
-            type="password"
-            className="form-control"
-            id="exampleInputPassword1"
-            placeholder="Введите пароль"
-            name='password'
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Войти
-        </button>
-      </form>
+          <input type="submit" value="Войти" />
+          <div className="signup_link">
+            Еще не зарегистрированы?
+            {' '}
+            <a href="/register">Зарегистрироваться</a>
+          </div>
+        </form>
+      </div>
     </Layout>
   );
 }
