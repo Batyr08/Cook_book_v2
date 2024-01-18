@@ -34,7 +34,7 @@ document.addEventListener('click', async (e) => {
         });
   
         if (response.status === 200) {
-          window.location.reload();
+          window.location.href = '/recipes';
         } else {
           console.log('ОШИБКА');
         }
