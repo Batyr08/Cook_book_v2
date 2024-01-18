@@ -39,7 +39,7 @@ app.use('/', mainRouter)
 app.use('/ai', aiRouter)
 app.use('/register', secureRoute, regRouter)
 app.use('/login', secureRoute, logRouter)
-app.use('/recipes', recipeRouter)
+app.use('/recipes', checkUser, recipeRouter)
 
 app.listen(PORT, () => {
   console.log(`Сервер запущен на порту: ${PORT}`);
