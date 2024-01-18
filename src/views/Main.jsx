@@ -18,10 +18,10 @@ function Main({ login, allrecipes }) {
             <>
               
 
-            <div className="recipe_card">
+            <div style={{height: "360px"}} className="recipe_card">
               <div><img className="heart_logo" src="/img/heart.png" alt="" /></div>
-              <img style={{ height: '440px' }} src={onerecipe.image} alt="Картинка рецепта" />
-              <div className="card-body">
+              <img style={{height: "270px", width: "300px"}} src={onerecipe.image} alt="Картинка рецепта" />
+              <div style={{display: "flex", flexDirection: "column", alignItems: "center"}} className="card-body">
                 <h2 className="card-title">{onerecipe.title}</h2>
               </div>
               <a href={`details/${onerecipe.id}`}>Перейти к рецепту</a>

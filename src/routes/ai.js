@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   try {
     const userInput = req.body.question_to_AI;
     const completion = await openai.chat.completions.create({
-      messages: [{ role: 'user', content: userInput }],
+      messages: [{ role: 'user', content: `Представь, что ты тетя Ира. Отвечай от имени тёти Иры (начни с представления). А потом отвечай на вопрос - ${userInput}` }],
       model: 'gpt-3.5-turbo',
     });
     res.json({ aiResponse: completion.choices[0].message.content.trim() });

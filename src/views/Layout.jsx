@@ -64,11 +64,6 @@ function Layout({ children, login }) {
                       Войти
                     </a>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/register">
-                      Регистрация
-                    </a>
-                  </li>
                 </ul>
               )}
             
