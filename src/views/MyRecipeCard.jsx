@@ -11,6 +11,7 @@ module.exports = function MyRecipeCard({
   return (
     <>
       <link rel="stylesheet" href="/css/card.css" />
+      <script defer src="/client/myrecipefront.js" />
       <div className="recipe_card">
         <img style={{ height: '440px' }} src={recipeImg} alt="Картинка рецепта" />
         <div className="card-body">
@@ -22,6 +23,16 @@ module.exports = function MyRecipeCard({
             Удалить
           </button>
         </div>
+        <a href={`recipes/${recipeId}`}>Перейти к рецепту</a>
+        <form className="editform" data-id={recipeId}>
+          <input type="text" name="title" placeholder="Добавьте название" required defaultValue={recipeTit} />
+          <input type="text" name="image" placeholder="Добавьте картинку" required defaultValue={recipeImg} />
+          <input type="text" name="description" placeholder="Добавьте описание" required defaultValue={recipeDes} />
+          <input type="text" name="ingredient" placeholder="Добовьте ингредиенты" required defaultValue={recipeIng} />
+          <input type="number" name="time" placeholder="Добавьте время приготовления" required defaultValue={recipeTime} />
+          <button className="custom-btn btn-16">Изменить</button>
+
+        </form>         
       </div>
     </>
   );

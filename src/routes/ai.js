@@ -10,7 +10,8 @@ const openaiApiKey = process.env.OPENAI_API_KEY;
 const openai = new OpenAI({ key: openaiApiKey });
 
 router.get('/', (req, res) => {
-    renderTemplate(AI, { openaiApiKey }, res);
+  const { login } = req.session;
+    renderTemplate(AI, { openaiApiKey, login }, res);
 });
 
 router.post('/', async (req, res) => {
